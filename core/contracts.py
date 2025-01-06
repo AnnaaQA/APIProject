@@ -22,3 +22,21 @@ RESOURCE_DATA_SCHEME = {
     "required": ["id", "name", "year", "color", "pantone_value"]
 }
 
+CREATED_USER_SCHEME = {
+    "type": "object",
+    "properties": {
+        "name": {"type": "string"},
+        "job": {"type": "string"},
+        "id": {"type": "string"}
+    },
+    "required": ["name", "job", "id"]
+}
+
+UPDATED_USER_SCHEME = {
+    "type": "object",
+    "properties": {
+        "name": {"type": "string"},
+        "job": {"type": "string"}
+    },
+    "required": ["name"]
+}
