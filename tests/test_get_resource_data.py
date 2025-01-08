@@ -22,7 +22,7 @@ def test_list_resource():
     data = response.json()['data']
 
     for item in data:
-        with allure.step('Элемент списка'):
+        with allure.step(f'Элемент списка {item}'):
             validate(item, RESOURCE_DATA_SCHEME)
             with allure.step(f'Цвет color начинается с символа {HEX}'):
                 assert item['color'].startswith(HEX)
