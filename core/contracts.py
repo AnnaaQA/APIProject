@@ -40,3 +40,22 @@ UPDATED_USER_SCHEME = {
     },
     "required": ["name"]
 }
+
+REGISTERED_USER_SCHEME = {
+    "type": "object",
+    "properties": {
+        "id": {"type": "number"},
+        "token": {"type": "string"},
+    },
+    "required": ["id", "token"]
+}
+
+LOGGEDIN_USER_SCHEME = {
+    "type": "object",
+    "properties": {
+        "token": {"type": "string"},
+    },
+    "required": ["token"]
+}
+
+
