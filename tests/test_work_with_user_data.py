@@ -18,11 +18,11 @@ def test_create_new_user():
         "job": "leader"
     }
     with allure.step(f'Выполнен запрос по адресу {BASE_URL + CREATE_USER}'):
-        responce = httpx.post(BASE_URL + CREATE_USER, json=body)
+        response = httpx.post(BASE_URL + CREATE_USER, json=body)
     with allure.step('Код ответа 201'):
-        assert responce.status_code == 201
+        assert response.status_code == 201
 
-    responce_json = responce.json()
+    responce_json = response.json()
     creation_data = responce_json['createdAt'].replace('T', ' ')
     current_data = str(datetime.datetime.utcnow())
 
