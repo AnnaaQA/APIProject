@@ -31,3 +31,12 @@ CREATED_USER_SCHEME = {
     },
     "required": ["name", "job", "id"]
 }
+
+UPDATED_USER_SCHEME = {
+    "type": "object",
+    "properties": {
+        "name": {"type": "string"},
+        "job": {"type": "string"}
+    },
+    "required": ["name"]
+}

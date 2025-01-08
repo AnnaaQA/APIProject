@@ -13,7 +13,7 @@ AVATAR_ENDS = "-image.jpg"
 @allure.suite('Проверка api запросов')
 @allure.title('Получен список юзеров')
 def test_list_users():
-    with allure.step(f' Выполнен запрос по адресу: {BASE_URL + LIST_USERS}'):
+    with allure.step(f'Выполнен запрос по адресу: {BASE_URL + LIST_USERS}'):
         response = httpx.get(BASE_URL + LIST_USERS)
 
     with allure.step('Код ответа: 200'):
