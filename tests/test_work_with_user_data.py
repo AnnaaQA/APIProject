@@ -12,6 +12,7 @@ DELETE_USER = "api/users/2"
 
 headers= {'x-api-key': 'reqres-free-v1'}
 
+
 @allure.suite('Создание нового пользователя')
 @allure.title('CREATE_USER')
 def test_create_new_user():
