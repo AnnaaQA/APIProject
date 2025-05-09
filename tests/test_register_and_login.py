@@ -8,8 +8,8 @@ BASE_URL = "https://reqres.in/"
 REGISTER_USER = "api/register"
 LOGIN_USER = "api/login"
 
-json_file_new_users_data = open('/Users/Anna/PycharmProjects/PythonProject/core/new_users_data.json')
-json_file_user_data_only_email = open('/Users/Anna/PycharmProjects/PythonProject/core/user_data_only_email.json')
+json_file_new_users_data = open('/Users/Anna/PycharmProjects/API_users/core/new_users_data.json')
+json_file_user_data_only_email = open('/Users/Anna/PycharmProjects/API_users/core/user_data_only_email.json')
 
 users_data = json.load(json_file_new_users_data)
 user_data_only_email = json.load(json_file_user_data_only_email)

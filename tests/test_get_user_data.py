@@ -11,11 +11,13 @@ EMAIL_ENDS = "reqres.in"
 AVATAR_ENDS = "-image.jpg"
 DELAYED_REQUEST = "api/users?delay=3"
 
+headers= {'x-api-key': 'reqres-free-v1'}
+
 @allure.suite('Проверка api запросов')
 @allure.title('Получен список юзеров')
 def test_list_users():
     with allure.step(f'Выполнен запрос по адресу: {BASE_URL + LIST_USERS}'):
-        response = httpx.get(BASE_URL + LIST_USERS)
+        response = httpx.get(BASE_URL + LIST_USERS, headers=headers)
 
     with allure.step('Код ответа: 200'):
         assert response.status_code == 200
@@ -35,7 +37,7 @@ def test_list_users():
 @allure.title('Single <user>')
 def test_single_user():
     with allure.step(f' Выполнен запрос по адресу: {BASE_URL + SINGLE_USER}'):
-        response = httpx.get(BASE_URL + SINGLE_USER)
+        response = httpx.get(BASE_URL + SINGLE_USER, headers=headers)
     with allure.step('Status code 200'):
         assert response.status_code == 200
     data = response.json()['data']
@@ -49,11 +51,11 @@ def test_single_user():
 @allure.title('Not found <user>')
 def test_not_found_user():
     with allure.step(f' Выполнен запрос по адресу: {BASE_URL + NOT_FOUND}'):
-        response = httpx.get(BASE_URL + NOT_FOUND)
+        response = httpx.get(BASE_URL + NOT_FOUND, headers=headers)
     with allure.step('Status code 404'):
         assert response.status_code == 404
 
 def test_delayed_user_list():
-    response = httpx.get(BASE_URL + DELAYED_REQUEST, timeout=2)
+    response = httpx.get(BASE_URL + DELAYED_REQUEST, headers=headers, timeout=5)
     assert response.status_code == 200
 

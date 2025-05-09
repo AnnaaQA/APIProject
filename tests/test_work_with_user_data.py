@@ -10,6 +10,8 @@ CREATE_USER = "api/users"
 UPDATE_USER = "api/users/2"
 DELETE_USER = "api/users/2"
 
+headers= {'x-api-key': 'reqres-free-v1'}
+
 @allure.suite('Создание нового пользователя')
 @allure.title('CREATE_USER')
 def test_create_new_user():
@@ -18,7 +20,7 @@ def test_create_new_user():
         "job": "leader"
     }
     with allure.step(f'Выполнен запрос по адресу {BASE_URL + CREATE_USER}'):
-        response = httpx.post(BASE_URL + CREATE_USER, json=body)
+        response = httpx.post(BASE_URL + CREATE_USER, json=body, headers=headers)
     with allure.step('Код ответа 201'):
         assert response.status_code == 201
 
@@ -44,7 +46,7 @@ def test_update_user_with_put():
     }
 
     with allure.step(f'Выполнен запрос по адресу {BASE_URL+UPDATE_USER}'):
-        responce = httpx.put(BASE_URL+UPDATE_USER, json=body)
+        responce = httpx.put(BASE_URL+UPDATE_USER, json=body, headers=headers)
     with allure.step('Код ответа 200'):
         assert responce.status_code == 200
 
@@ -69,7 +71,7 @@ def test_update_user_with_patch():
     }
 
     with allure.step(f'Выполнен запрос по адресу {BASE_URL+UPDATE_USER}'):
-        responce = httpx.patch(BASE_URL+UPDATE_USER, json=body)
+        responce = httpx.patch(BASE_URL+UPDATE_USER, json=body, headers=headers)
     with allure.step('Код ответа 200'):
         assert responce.status_code == 200
 
@@ -92,7 +94,7 @@ def test_update_user_with_patch_without_job():
         "name": "jerry"
     }
     with allure.step(f'Выполнен запрос по адресу {BASE_URL+UPDATE_USER}'):
-        responce = httpx.patch(BASE_URL+UPDATE_USER, json=body)
+        responce = httpx.patch(BASE_URL+UPDATE_USER, json=body, headers=headers)
     with allure.step('Код ответа 200'):
         assert responce.status_code == 200
 
@@ -111,6 +113,6 @@ def test_update_user_with_patch_without_job():
 @allure.title('DELETE_USER')
 def test_delete_user():
     with allure.step(f'Выполнен запрос по адресу {BASE_URL+DELETE_USER}'):
-        responce = httpx.delete(BASE_URL+DELETE_USER)
+        responce = httpx.delete(BASE_URL+DELETE_USER, headers=headers)
     with allure.step('Код ответа 204'):
         assert responce.status_code == 204
